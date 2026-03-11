@@ -6,15 +6,54 @@ import {
     View
 } from 'react-native';
 
+import { useState } from "react";
+import Toast from "react-native-toast-message";
+
 export default function Login(){
+
+    const [usuario, setUsuario] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const validalogin = () =>{
+        if(usuario == "admin2" && senha == "admin"){
+            alert("sucesso");
+            Toast.show({
+                type: 'success',
+                text1: 'Sucesso!', 
+                text2: 'Campeão Vencedor!'
+            })
+        }else{
+            alert("Usuario ou Senha ivalidos!")
+            Toast.show({
+                type: 'error',
+                text1: 'Usuario ou Senha ivalidos!',
+                text2: 'Ta invalido irmão'
+                
+            })
+        }
+    }
+
     return(
         <View style={styles.container}>
             <Text style={styles.titulo}>Área Restrita</Text>
-            <TextInput style={styles.input} />
-            <TextInput style={styles.input} secureTextEntry={true} />
-            <TouchableOpacity style={styles.botao}>
+
+            <TextInput 
+                style={styles.input} 
+                value={usuario}
+                onChangeText={setUsuario}
+            />
+
+            <TextInput 
+                style={styles.input} 
+                secureTextEntry={true}
+                value={senha}
+                onChangeText={setSenha}
+            />
+            <TouchableOpacity style={styles.botao} onPress={validalogin}>
                 <Text style={styles.titulo}>Fazer Login</Text>
             </TouchableOpacity>
+            <Toast />
+
         </View>
     );
 }
