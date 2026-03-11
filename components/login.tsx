@@ -15,7 +15,7 @@ export default function Login(){
     const [senha, setSenha] = useState("");
 
     const validalogin = () =>{
-        if(usuario == "admin" && senha == "admin"){
+        if(usuario == "admin2" && senha == "admin"){
             alert("sucesso");
             Toast.show({
                 type: 'success',
